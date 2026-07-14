@@ -1,0 +1,41 @@
+---
+import "../styles/global.css";
+import { SITE } from "../config";
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description ?? SITE.standfirst} />
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="wrap">
+    <header class="masthead">
+      <a class="wordmark" href="/">{SITE.name}</a>
+      <nav class="nav">
+        <a href="/">Writing</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer class="foot">
+      <span>{SITE.name} &middot; {SITE.location}</span>
+      <span>{SITE.disclaimer}</span>
+    </footer>
+  </div>
+</body>
+</html>

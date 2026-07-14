@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+---
+<Base title="About">
+  <article class="article">
+    <h1>About</h1>
+    <div class="prose">
+      <p>
+        Replace this with your own words. Who you are, why you write about
+        companies, and what a reader should expect.
+      </p>
+      <h2>Method</h2>
+      <p>
+        A good place to state how you actually work — what you read, what you
+        ignore, how you size conviction, and what would change your mind.
+      </p>
+      <h2>Disclosure</h2>
+      <p>
+        Say plainly whether you hold positions in the companies you write about.
+        Readers should know. {SITE.disclaimer}.
+      </p>
+    </div>
+  </article>
+</Base>

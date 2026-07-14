@@ -1,0 +1,61 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "posts"
+    label: "Writing"
+    label_singular: "Post"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{ticker}}"
+    summary: "{{ticker}} — {{title}}"
+    sortable_fields: ["date", "ticker"]
+    fields:
+      - label: "Ticker"
+        name: "ticker"
+        widget: "string"
+        hint: "Uppercase, e.g. NVDA. This anchors the post."
+        pattern: ['^[A-Z0-9.\-]{1,8}$', "Uppercase letters and numbers only"]
+
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "The thesis, not the company name."
+
+      - label: "Conviction"
+        name: "conviction"
+        widget: "select"
+        options:
+          - { label: "High", value: "high" }
+          - { label: "Watching", value: "watching" }
+          - { label: "Pass", value: "pass" }
+        default: "watching"
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        format: "YYYY-MM-DD"
+
+      - label: "Summary"
+        name: "summary"
+        widget: "text"
+        required: false
+        hint: "One or two lines. Used for search engines and previews."
+
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+        hint: "Drafts are saved but do not appear on the site."
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
